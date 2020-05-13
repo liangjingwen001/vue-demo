@@ -3,6 +3,7 @@ import axios from 'axios' // npm i axios --save
 let ajax = axios.create();
 
 let baseURL = 'http://127.0.0.1:3000'
+// let baseURL = this.HOST
 
 export let method = {
   post: 'post',
@@ -22,7 +23,8 @@ export let http = function(type, url, more) {
     baseURL: baseURL,
     url: url,
     method: type,
-    params: more.params,
+    params: type === 'get' ? more.params : '',
+    data: type === 'post' ? more.params : '',
   })
   .then(res => {
     more.success(res);

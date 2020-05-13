@@ -1,12 +1,6 @@
 <template>
   <div id="app">
-    <el-aside width="230px">
-      <leftNav></leftNav>
-    </el-aside>
-    <el-container>
-      <router-view></router-view>
-    </el-container>
-    <!-- <myFoot v-on:toparent="getMsg"></myFoot> -->
+    <router-view></router-view>
   </div>
 </template>
 
@@ -46,6 +40,5 @@ html,body{margin: 0; padding: 0}
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
