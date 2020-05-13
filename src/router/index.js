@@ -15,6 +15,13 @@ export default new Router({
         }
     },
     {
+        name: 'register',
+        path: '/register',
+        component(resolve) {
+            require(['../view/register.vue'], resolve)
+        }
+    },
+    {
         name: 'detail',
         path: '/detail',
         component: () => import('../view/detail.vue'),

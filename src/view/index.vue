@@ -12,6 +12,7 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
+      age: 11
     }
   },
   methods: {
@@ -47,11 +48,7 @@ export default {
       })
       }
     },
-  created() {
-    this.init();
-    this.testAction()
-    this.$store.dispatch("testAction")
-  }
+  created() {}
 }
 </script>
 
