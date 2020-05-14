@@ -23,6 +23,8 @@ export let http = function(type, url, more) {
     baseURL: baseURL,
     url: url,
     method: type,
+    headers: more.headers,
+    responseType: more.responseType,
     params: type === 'get' ? more.params : '',
     data: type === 'post' ? more.params : '',
   })
