@@ -1,6 +1,10 @@
 <template>
-  <div class="hello">
-        <div class="title">我是首页</div>
+  <div class="container">
+    <div v-for="(item, index) in newsList" :key="index" class="content">
+      <div>{{item.title}} <span @click="delNews(item._id)">删除</span></div>
+      <div>作者：{{item.author}} <span @click="editNews(item._id)">编辑</span></div>
+      <p>{{item.newsContent}}</p>
+    </div>
   </div>
 </template>
 
@@ -12,7 +16,8 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      age: 11
+      age: 11,
+      newsList: [],
     }
   },
   methods: {
@@ -21,41 +26,41 @@ export default {
         this.$router.push({name: 'detail'})
     },
     init() {
-      this.$ajax.addUser({
+      this.$ajax.selectNews({
         params: {
-          userName: '迪迦',
-          passWord: '光之子',
-          age: 999
+          token: this.$store.state.token
         },
         success: (res) => {
-          console.log(res)
-        },
-        error: (err) => {
-          console.log(err)
+          this.newsList = res.data.data;
         }
       })
-
-      this.$ajax.getUser({
-        params: {
-          us: '迪迦'
-        },
-        success: (res) => {
-          console.log(res)
-        },
-        error: (err) => {
-          console.log(err)
-        }
-      })
-      }
     },
-  created() {}
+    delNews(id) {
+      this.$ajax.delNews({
+        params: {
+          _id: id,
+          token: this.$store.state.token
+        },
+        success: (res) => {
+          if (res.data.code === 200) {
+            this.init();
+          }
+        }
+      })
+    },
+    editNews(id) {
+      this.$router.push({name: 'detail', query: {id: id}})
+    }
+  },
+  created() {
+    this.init();
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-$titleColor: blue;
-.hello{color: red;
-  .title{color: $titleColor; font-size: 2rem; width: 20rem; background-color: #eee; display: inline-block; height: 10rem}
+.container{
+  .content{width: 98%; margin: 1rem auto; border: 1px solid #eee; border-radius: .5rem;}
 }
 </style>

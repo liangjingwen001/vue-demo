@@ -28,7 +28,11 @@ export default {
         },
         success: (res) => {
           if (res.data.code == 200) {
-             this.$router.push({name: 'index'})
+            this.$store.commit('islogin', true)
+            this.$store.commit('setToken', res.data.token)
+            window.sessionStorage.setItem('islogin', true);
+            window.sessionStorage.setItem('token', res.data.token)
+            this.$router.push({name: 'index'})
           }
         }
       })

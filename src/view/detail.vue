@@ -1,10 +1,13 @@
 <template>
   <div class="container">
     <input type="file" @change="uploadImg">
-    <button>上传图片</button><br />
-    <img :src="imgUrl" alt="">
     <router-link to="/result"> Go to result</router-link>
-    <router-view></router-view>
+    <img :src="imgUrl" alt="">
+    <input type="text" placeholder="标题" v-model="title"><br/>
+    <input type="text" placeholder="作者" v-model="author"><br/>
+    <textarea name="" id="" cols="30" rows="10" placeholder="内容" v-model="newsContent"></textarea><br/>
+    <button @click="addNews">上传</button>
+    <button @click="editNews">编辑</button>
   </div>
 </template>
 
@@ -14,7 +17,11 @@ export default {
   data () {
     return {
       img: '',
-      imgUrl: ''
+      imgUrl: '',
+      title: '',
+      author: '',
+      newsContent: '',
+      id: ''
     }
   },
   methods: {
@@ -23,7 +30,6 @@ export default {
     },
     uploadImg(e) {
       let file = e.target.files[0];
-      console.log(file)
       if (file) {
         let reader = new FileReader();
         reader.readAsDataURL(file);
@@ -43,7 +49,9 @@ export default {
     },
     getImg(e) {
       this.$ajax.getImg({
-        params: {},
+        params: {
+          token: this.$store.state.token
+        },
         // responseType: 'arraybuffer',
         success: (res) => {
           this.imgUrl = 'data:image/png;base64,' + res.data.data;
@@ -55,9 +63,56 @@ export default {
         }
       })
     },
+    addNews() {
+      this.$ajax.addNews({
+        params: {
+          title: this.title,
+          author: this.author,
+          newsContent: this.newsContent,
+          token: this.$store.state.token
+        },
+        success: (res) => {
+          this.$router.push({name: 'index'})
+        }
+      })
+    },
+    init(id) {
+      this.$ajax.newsDetail({
+        params: {
+          _id: id,
+          token: this.$store.state.token
+        },
+        success: (res) => {
+          let data = res.data.data[0];
+          this.title = data.title,
+          this.author = data.author,
+          this.newsContent = data.newsContent
+        }
+      })
+    },
+    editNews() {
+      this.$ajax.editNews({
+        params: {
+          _id: this.id,
+          title: this.title,
+          author: this.author,
+          newsContent: this.newsContent,
+          token: this.$store.state.token
+        },
+        success: (res) => {
+          if (res.data.code = 200) {
+            this.$router.push({name: 'index'})
+          }
+        }
+      })
+    },
   },
   mounted() {
     this.getImg();
+    if (this.$route.query.id) {
+      this.id = this.$route.query.id;
+      this.init(this.$route.query.id);
+    }
   }
 }
 </script>

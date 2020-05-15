@@ -26,7 +26,6 @@ export default {
   },
   computed: {},
   created() {
-    this.setToken('12312312312312')
     this.$store.commit('islogin', false)
   }
 }

@@ -10,9 +10,7 @@ export default new Router({
         [{
         name: 'login',
         path: '/login',
-        component(resolve) {
-            require(['../view/login.vue'], resolve)
-        }
+        component(resolve) {require(['../view/login.vue'], resolve)}
     },
     {
         name: 'register',
@@ -28,15 +26,21 @@ export default new Router({
       //   children: [
       //   {
       //     name: 'head',
-      //     path: '/detail/head',   
+      //     path: '/detail/head',
       //     component: () => import('../components/head.vue')
       //   }
       // ],redirect:'/detail/head' // 子组件，默认显示这个
+      meta: {
+        needLogin: true
+      }
     },
     {
         name: 'index',
         path: '/index',
-        component: index
+        component: index,
+        meta: {
+          needLogin: true
+        }
     }],
     require('./result.js')
     )

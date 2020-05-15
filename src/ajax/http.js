@@ -1,9 +1,9 @@
 import axios from 'axios' // npm i axios --save
+import store from '../store/index'
+import router from '../router/index'
 
 let ajax = axios.create();
-
 let baseURL = 'http://127.0.0.1:3000'
-// let baseURL = this.HOST
 
 export let method = {
   post: 'post',
@@ -29,6 +29,10 @@ export let http = function(type, url, more) {
     data: type === 'post' ? more.params : '',
   })
   .then(res => {
+    if (res.data.code === 401) {
+      store.commit('islogin', false)
+      router.push({name: 'login'})
+    }
     more.success(res);
   })
   .catch(err => {

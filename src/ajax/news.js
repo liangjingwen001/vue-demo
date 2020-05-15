@@ -7,4 +7,19 @@ export default {
   getImg(more) {
     http(method.get, '/news/getImg', more)
   },
+  addNews(more) {
+    http(method.post, '/news/addNews', more)
+  },
+  selectNews(more) {
+    http(method.post, '/news/selectNews', more)
+  },
+  delNews(more) {
+    http(method.post, '/news/delNews', more)
+  },
+  newsDetail(more) {
+    http(method.post, '/news/newsDetail', more)
+  },
+  editNews(more) {
+    http(method.post, '/news/editNews', more)
+  },
 }
