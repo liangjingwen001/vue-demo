@@ -2,6 +2,14 @@
 require('./check-versions')()
 
 process.env.NODE_ENV = 'production'
+//兼容测试环境打包
+global.NODE_ENV = 'production'
+process.argv.splice(2).forEach((item) => {
+  let exec = (/--(.*)/).exec(item);
+  if (exec) {
+    process.env.NODE_ENV = exec[1];
+  }
+})
 
 const ora = require('ora')
 const rm = require('rimraf')

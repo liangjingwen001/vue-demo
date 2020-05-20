@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="text" v-if="this.$store.state.showMessage">{{this.$store.state.totalText}}</div>
+    <div class="text" v-if="this.$store.state.showToast">{{this.$store.state.toastText}}</div>
   </div>
 </template>
 

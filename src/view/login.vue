@@ -7,7 +7,6 @@
       <div class="btn" @click="login" >登陆</div>
       <div @click="reg">立即注册</div>
     </div>
-    <message></message>
   </div>
 </template>
 
@@ -35,7 +34,7 @@ export default {
             window.sessionStorage.setItem('token', res.data.token)
             this.$router.push({name: 'index'})
           } else {
-            this.$store.commit('showMessage', res.data.msg)
+            this.$store.commit('showToast', res.data.msg)
           }
         }
       })

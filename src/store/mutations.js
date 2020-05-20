@@ -6,11 +6,11 @@ const mutations = {
     setToken(state, token) {
         state.token = token
     },
-    showMessage(state, msg) {
-        state.showMessage = true;
-        state.totalText = msg;
+    showToast(state, msg) {
+        state.showToast = true;
+        state.toastText = msg;
         setTimeout(() => {
-          state.showMessage = false;
+          state.showToast = false;
         }, 3000)
     }
   }

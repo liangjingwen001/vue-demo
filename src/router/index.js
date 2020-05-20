@@ -9,7 +9,7 @@ export default new Router({
     routes: [].concat(
         [{
         name: 'login',
-        path: '/login',
+        path: '/',
         component(resolve) {require(['../view/login.vue'], resolve)}
     },
     {

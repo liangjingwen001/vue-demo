@@ -1,7 +1,8 @@
 
 import Vue from 'vue'
 import App from './App'
-import message from "./components/message";
+import toast from "./components/toast";
+import modal from "./components/modal/modal";
 import store from "./store/index";
 import router from "./router/index";
 import ElementUI from 'element-ui';
@@ -9,7 +10,8 @@ import ajax from './ajax/index.js';
 
 Vue.use(ElementUI);
 
-Vue.component('message', message)
+Vue.component('toast', toast)
+Vue.component('modal', modal)
 
 Vue.config.productionTip = false
 Vue.prototype.$ajax = ajax
