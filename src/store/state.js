@@ -5,7 +5,8 @@ const state = {
     num: 10,
     price: 10,
     showToast: false,
-    toastText: '123'
+    toastText: '123',
+    timer: undefined
 }
 
 export default state

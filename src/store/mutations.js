@@ -9,9 +9,10 @@ const mutations = {
     showToast(state, msg) {
         state.showToast = true;
         state.toastText = msg;
-        setTimeout(() => {
+        clearTimeout(state.timer)
+        state.timer = setTimeout(() => {
           state.showToast = false;
-        }, 3000)
+        }, 2000)
     }
   }
 

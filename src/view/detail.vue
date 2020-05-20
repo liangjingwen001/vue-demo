@@ -71,7 +71,11 @@ export default {
           token: this.$store.state.token
         },
         success: (res) => {
-          this.$router.push({name: 'index'})
+          if (res.data.code === 200) {
+            this.$router.push({name: 'index'})
+          } else {
+            this.$store.commit('showToast', res.data.msg)
+          }
         }
       })
     },
@@ -101,6 +105,8 @@ export default {
         success: (res) => {
           if (res.data.code = 200) {
             this.$router.push({name: 'index'})
+          } else {
+            this.$store.commit('showToast', res.data.msg)
           }
         }
       })
