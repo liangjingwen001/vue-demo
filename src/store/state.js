@@ -4,6 +4,8 @@ const state = {
     token: window.sessionStorage.getItem('token'),
     num: 10,
     price: 10,
+    showMessage: false,
+    totalText: '123'
 }
 
 export default state

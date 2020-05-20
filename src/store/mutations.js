@@ -5,6 +5,13 @@ const mutations = {
     },
     setToken(state, token) {
         state.token = token
+    },
+    showMessage(state, msg) {
+        state.showMessage = true;
+        state.totalText = msg;
+        setTimeout(() => {
+          state.showMessage = false;
+        }, 3000)
     }
   }
 

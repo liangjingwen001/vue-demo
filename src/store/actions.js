@@ -1,9 +1,10 @@
 // 全局异步方法
 const actions = {
-    testAction(context) {
+    showMessage(context, data) {
         // context包含state,mutations,actions,getters
         // 执行异步操作
-      console.log(context)
+      console.log(data)
+      context.state.showMessage = data.showMessage
     }
   }
 

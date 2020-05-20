@@ -5,7 +5,7 @@ export default {
     http(method.post, '/news/uploadImg', more)
   },
   getImg(more) {
-    http(method.get, '/news/getImg', more)
+    http(method.post, '/news/getImg', more)
   },
   addNews(more) {
     http(method.post, '/news/addNews', more)

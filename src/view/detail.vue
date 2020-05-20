@@ -56,10 +56,9 @@ export default {
         success: (res) => {
           this.imgUrl = 'data:image/png;base64,' + res.data.data;
 
-          // console.log(btoa(new Uint8Array(res.data).reduce((data, byte) => data + String.fromCharCode(byte), '')))
-          // const str = String.fromCharCode(...new Uint8Array(res.data));
-          // this.imgUrl = `data:image/jpeg;base64,${window.btoa(str)}`;
-          // console.log(this.imgUrl)
+          // console.log('-------------------------------')
+          // const str = btoa(new Uint8Array(res.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
+          // this.imgUrl = 'data:image/png;base64,' + str;
         }
       })
     },

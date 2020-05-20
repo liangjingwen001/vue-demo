@@ -4,9 +4,10 @@
     <div>
       <div><input type="text" placeholder="Username" v-model="userName"></div>
       <div><input type="text" placeholder="Password" v-model="passWord"></div>
-      <div class="btn" @click="login">登陆</div>
+      <div class="btn" @click="login" >登陆</div>
       <div @click="reg">立即注册</div>
-	</div>
+    </div>
+    <message></message>
   </div>
 </template>
 
@@ -33,6 +34,8 @@ export default {
             window.sessionStorage.setItem('islogin', true);
             window.sessionStorage.setItem('token', res.data.token)
             this.$router.push({name: 'index'})
+          } else {
+            this.$store.commit('showMessage', res.data.msg)
           }
         }
       })
@@ -40,6 +43,8 @@ export default {
     reg() {
       this.$router.push({name: 'register'})
     }
+  },
+  mounted() {
   }
 }
 </script>
