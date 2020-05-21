@@ -21,7 +21,7 @@ export default {
       title: '',
       author: '',
       newsContent: '',
-      id: ''
+      id: '',
     }
   },
   methods: {
@@ -112,8 +112,21 @@ export default {
       })
     },
   },
+  computed: {
+    // add() {
+    //   console.log('++++++')
+    //   return this.a + this.count
+    // },
+    // del() {
+    //   console.log('----')
+    //   return this.b + this.count
+    // }
+    // fontStyle() {
+    //   return {fontSize: this.showStyle}; //样式名：控制变量
+    // }
+  },
   mounted() {
-    this.getImg();
+    // this.getImg();
     if (this.$route.query.id) {
       this.id = this.$route.query.id;
       this.init(this.$route.query.id);
@@ -127,4 +140,5 @@ export default {
   .container{
     img{width: 100%; height: 300px;}
   }
+  .fontSize{font-size: 2rem;}
 </style>

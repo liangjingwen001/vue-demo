@@ -3,7 +3,7 @@
     <h1>登录页面</h1>
     <div>
       <div><input type="text" placeholder="Username" v-model="userName"></div>
-      <div><input type="text" placeholder="Password" v-model="passWord"></div>
+      <div><input type="text" placeholder="Password" v-model="passWord" @keypress.enter="login"></div>
       <div class="btn" @click="login" >登陆</div>
       <div @click="reg">立即注册</div>
     </div>

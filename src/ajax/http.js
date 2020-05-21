@@ -32,7 +32,7 @@ export let http = function(type, url, more) {
   .then(res => {
     if (res.data.code === 401) {
       store.commit('islogin', false)
-      router.push({name: 'login'})
+      router.push({name: 'login'}).catch(data => {  })
     }
     more.success(res);
   })
