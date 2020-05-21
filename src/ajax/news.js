@@ -22,4 +22,7 @@ export default {
   editNews(more) {
     http(method.post, '/news/editNews', more)
   },
+  downloadFile(more) {
+    http(method.post, '/news/downloadFile', more)
+  },
 }

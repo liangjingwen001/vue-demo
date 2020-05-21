@@ -8,6 +8,8 @@
     <textarea name="" id="" cols="30" rows="10" placeholder="内容" v-model="newsContent"></textarea><br/>
     <button @click="addNews">上传</button>
     <button @click="editNews">编辑</button>
+    <button @click="downloadImg">下载图片</button>
+    <button @click="downloadFile">下载文件</button>
   </div>
 </template>
 
@@ -111,20 +113,39 @@ export default {
         }
       })
     },
+    downloadImg() {
+      this.$ajax.getImg({
+        params: {
+          token: this.$store.state.token
+        },
+        success: (res) => {
+          let src = 'data:image/png;base64,' + res.data.data;
+          const aLink = document.createElement('a');
+          aLink.href = src;
+          aLink.download = 'test.png';
+          aLink.click();
+        }
+      })
+    },
+    downloadFile() {
+      this.$ajax.downloadFile({
+        params: {
+          token: this.$store.state.token
+        },
+        responseType: 'blob',
+        success: (res) => {
+          // xsls类型：application/vnd.ms-excel
+          // 图片类型：image/jpeg
+          let blob = new Blob([res.data], {type: "text/xml"})
+          const aLink = document.createElement('a');
+          aLink.href = URL.createObjectURL(blob);
+          aLink.setAttribute('download', '测试.xls');
+          aLink.click();
+        }
+      })
+    }
   },
-  computed: {
-    // add() {
-    //   console.log('++++++')
-    //   return this.a + this.count
-    // },
-    // del() {
-    //   console.log('----')
-    //   return this.b + this.count
-    // }
-    // fontStyle() {
-    //   return {fontSize: this.showStyle}; //样式名：控制变量
-    // }
-  },
+  computed: {},
   mounted() {
     // this.getImg();
     if (this.$route.query.id) {

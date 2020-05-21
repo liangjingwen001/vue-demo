@@ -13,8 +13,8 @@ Vue.use(ElementUI);
 Vue.component('toast', toast)
 Vue.component('modal', modal)
 
-Vue.config.productionTip = false
-Vue.prototype.$ajax = ajax
+Vue.config.productionTip = false;
+Vue.prototype.$ajax = ajax;
 
 router.beforeEach((to, from, next) => {
 	if (to.meta.needLogin) {
