@@ -53,8 +53,20 @@ export default {
     }
   },
   created() {
-    this.init();
-  }
+    // 跳转后再获取数据
+    // this.init();
+  },
+  beforeRouteLeave(to, from, next) {
+    console.log('beforeRouteLeave')
+    next()
+  },
+  // 获取数据后再跳转
+  beforeRouteEnter (to, from, next) {
+      console.log('beforeRouteEnter')
+      next((vm) => {
+        vm.init();
+      })
+    },
 }
 </script>
 

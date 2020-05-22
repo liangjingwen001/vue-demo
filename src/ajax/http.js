@@ -3,7 +3,6 @@ import store from '../store/index'
 import router from '../router/index'
 
 let ajax = axios.create();
-console.log(process.env.baseUrl)
 let baseURL = process.env.baseUrl 
 
 export let method = {

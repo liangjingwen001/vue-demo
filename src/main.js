@@ -21,7 +21,7 @@ router.beforeEach((to, from, next) => {
     if (store.state.login) {
       next();
     } else {
-      next({name: 'login'})
+      next('login')
     }
   } else {
     next()

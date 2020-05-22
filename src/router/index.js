@@ -10,7 +10,8 @@ export default new Router({
         [{
         name: 'login',
         path: '/',
-        component(resolve) {require(['../view/login.vue'], resolve)}
+        component(resolve) {require(['../view/login.vue'], resolve)},
+        alias: '/login'  // 别名
     },
     {
         name: 'register',
@@ -40,7 +41,8 @@ export default new Router({
         component: index,
         meta: {
           needLogin: true
-        }
+        },
+        // redirect: '/detail'  重定向
     }],
     require('./result.js')
     )
