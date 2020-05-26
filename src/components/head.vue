@@ -1,6 +1,8 @@
 <template>
   <div class="head">
-    我是顶部组件-{{msg}}
+    <slot name="first"></slot>
+    欢迎光临{{msg}}
+    <slot name="second"></slot>
   </div>
 </template>
 
@@ -23,6 +25,5 @@ export default {
 </script>
 
 <style scoped>
-.head{width: 100%; height: 200px; background-color: #eee}
+.head{width: 100%; height: 20px; background-color: rgba(0,0,0, 0.6); color: #fff; font-size: 12px;}
 </style>
-

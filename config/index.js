@@ -10,7 +10,16 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      // 前端: http://127.0.0.1:8080  接口: 127.0.0.1:3000   访问http://127.0.0.1:8080/ueser 会被转发到http://127.0.0.1:3000/ueser
+      '/': {  // 所有链接都会被匹配到
+      	target: 'http://127.0.0.1:3000/',
+      	changOrigin: true,
+      	pathRewrite: {  // 匹配到的链接会被替换，可有可无
+      		'^user': ''
+      	}
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -40,9 +49,11 @@ module.exports = {
     // Template for index.html
     index: path.resolve(__dirname, '../dist/index.html'),
 
-    // Paths
+    // 打包后文件要存放的路径
     assetsRoot: path.resolve(__dirname, '../dist'),
+    // 除了 index.html 之外的静态资源要存放的路径
     assetsSubDirectory: 'static',
+    // 打包后，index.html里面引用资源的的相对地址
     assetsPublicPath: '/',
 
     /**

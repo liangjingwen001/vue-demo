@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Head msg="米老鼠"><span slot="first">第一次来的</span><span slot="second">下次再来</span></Head>
     <h1>登录页面</h1>
     <div>
       <div><input type="text" placeholder="Username" v-model="userName"></div>
@@ -11,6 +12,7 @@
 </template>
 
 <script>
+import Head from '../components/head.vue'
 export default {
   name: 'HelloWorld',
   data () {
@@ -19,6 +21,7 @@ export default {
       passWord: ''
     }
   },
+  components:{Head},
   methods: {
     login() {
       this.$ajax.login({

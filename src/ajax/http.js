@@ -3,7 +3,7 @@ import store from '../store/index'
 import router from '../router/index'
 
 let ajax = axios.create();
-let baseURL = process.env.baseUrl 
+let baseURL = process.env.baseUrl
 
 export let method = {
   post: 'post',
@@ -20,6 +20,7 @@ export let http = function(type, url, more) {
     finally: function() {}
   }, more)
   return ajax({
+    // 如果url不是绝对路径，那么会将baseURL和url拼接作为请求的接口地址
     baseURL: baseURL,
     url: url,
     method: type,
