@@ -1,10 +1,13 @@
 import {method, http} from './http.js'
 
 export default {
-  getUser (more) {
-    http(method.get, '/user/detail', more)
+  login (more) {
+    return http(method.post, '/user/login', more)
   },
-  addUser(more) {
-    http(method.post, '/user/add', more)
+  register (more) {
+    return http(method.post, '/user/reg', more)
+  },
+  getCode (more) {
+    return http(method.post, '/user/getImgCode', more)
   }
 }

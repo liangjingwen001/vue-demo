@@ -1,12 +1,6 @@
 <template>
   <div id="app">
-    <el-aside width="230px">
-      <leftNav></leftNav>
-    </el-aside>
-    <el-container>
-      <router-view></router-view>
-    </el-container>
-    <!-- <myFoot v-on:toparent="getMsg"></myFoot> -->
+    <router-view></router-view>
   </div>
 </template>
 
@@ -19,22 +13,11 @@ export default {
     leftNav
   },
   data () {
-    return {
-      msg: '父组件传给子组件的数据',
-      sonData: ''
-    }
+    return {}
   },
-  methods: {
-    ...mapMutations(['islogin','setToken']),
-    getMsg(msg) {
-      this.sonData = msg
-    }
-  },
+  methods: {},
   computed: {},
-  created() {
-    this.setToken('12312312312312')
-    this.$store.commit('islogin', false)
-  }
+  created() {}
 }
 </script>
 
